@@ -1,0 +1,164 @@
+# CloudGuard Detection Rules Catalog
+version: "1.0.0"
+rules:
+  - id: "RULE-S3-001"
+    name: "S3 Bucket Made Public"
+    severity: "CRITICAL"
+    mitre_attack:
+      technique: "T1530"
+      name: "Data from Cloud Storage Object"
+      tactic: "Exfiltration"
+    cis_benchmark: "CIS AWS 2.1.5"
+
+  - id: "RULE-S3-002"
+    name: "S3 Bucket Encryption Disabled"
+    severity: "HIGH"
+    mitre_attack:
+      technique: "T1485"
+      name: "Data Destruction / Impair Defenses"
+      tactic: "Impact"
+    cis_benchmark: "CIS AWS 2.1.1"
+
+  - id: "RULE-SG-001"
+    name: "Security Group Opens SSH (Port 22) to 0.0.0.0/0"
+    severity: "HIGH"
+    mitre_attack:
+      technique: "T1021.004"
+      name: "Remote Services: SSH"
+      tactic: "Lateral Movement"
+    cis_benchmark: "CIS AWS 5.2"
+
+  - id: "RULE-SG-002"
+    name: "Security Group Opens RDP (Port 3389) to 0.0.0.0/0"
+    severity: "HIGH"
+    mitre_attack:
+      technique: "T1021.001"
+      name: "Remote Services: RDP"
+      tactic: "Lateral Movement"
+    cis_benchmark: "CIS AWS 5.3"
+
+  - id: "RULE-IAM-001"
+    name: "AWS Root Account Usage Detected"
+    severity: "CRITICAL"
+    mitre_attack:
+      technique: "T1078.001"
+      name: "Valid Accounts: Default Accounts"
+      tactic: "Initial Access / Privilege Escalation"
+    cis_benchmark: "CIS AWS 1.7"
+
+  - id: "RULE-IAM-002"
+    name: "Overly Permissive IAM Policy Attached (*:*)"
+    severity: "CRITICAL"
+    mitre_attack:
+      technique: "T1098"
+      name: "Account Manipulation"
+      tactic: "Persistence"
+    cis_benchmark: "CIS AWS 1.16"
+
+  - id: "RULE-IAM-003"
+    name: "Console Login Without MFA"
+    severity: "HIGH"
+    mitre_attack:
+      technique: "T1078.004"
+      name: "Valid Accounts: Cloud Accounts"
+      tactic: "Initial Access"
+    cis_benchmark: "CIS AWS 1.5"
+
+  - id: "RULE-CT-001"
+    name: "CloudTrail Logging Disabled or Deleted"
+    severity: "CRITICAL"
+    mitre_attack:
+      technique: "T1562.001"
+      name: "Impair Defenses: Disable Cloud Logs"
+      tactic: "Defense Evasion"
+    cis_benchmark: "CIS AWS 3.1"
+
+  - id: "RULE-EBS-001"
+    name: "Unencrypted EBS Volume Created"
+    severity: "MEDIUM"
+    mitre_attack:
+      technique: "T1486"
+      name: "Data Encrypted for Impact"
+      tactic: "Impact"
+    cis_benchmark: "CIS AWS 2.2.1"
+
+  - id: "RULE-RDS-001"
+    name: "RDS Database Snapshot Shared Publicly"
+    severity: "CRITICAL"
+    mitre_attack:
+      technique: "T1530"
+      name: "Data from Cloud Storage Object"
+      tactic: "Exfiltration"
+    cis_benchmark: "CIS AWS 2.3.1"
+
+  - id: "RULE-GEO-001"
+    name: "Console Login From Flagged Geolocation"
+    severity: "HIGH"
+    mitre_attack:
+      technique: "T1078"
+      name: "Valid Accounts"
+      tactic: "Initial Access"
+    cis_benchmark: "CIS AWS 1.3"
+
+  - id: "RULE-NET-001"
+    name: "VPC Flow Logs Disabled"
+    severity: "HIGH"
+    mitre_attack:
+      technique: "T1562.001"
+      name: "Impair Defenses: Disable Cloud Logs"
+      tactic: "Defense Evasion"
+    cis_benchmark: "CIS AWS 3.9"
+
+  - id: "RULE-CW-001"
+    name: "Security CloudWatch Alarm Deleted"
+    severity: "MEDIUM"
+    mitre_attack:
+      technique: "T1562.001"
+      name: "Impair Defenses"
+      tactic: "Defense Evasion"
+    cis_benchmark: "CIS AWS 3.14"
+
+  - id: "RULE-KMS-001"
+    name: "KMS Customer Key Scheduled for Deletion"
+    severity: "HIGH"
+    mitre_attack:
+      technique: "T1485"
+      name: "Data Destruction"
+      tactic: "Impact"
+    cis_benchmark: "CIS AWS 3.7"
+
+  - id: "RULE-EC2-001"
+    name: "EC2 Instance Permitting IMDSv1"
+    severity: "MEDIUM"
+    mitre_attack:
+      technique: "T1552.005"
+      name: "Cloud Instance Metadata API"
+      tactic: "Credential Access"
+    cis_benchmark: "CIS AWS 5.4"
+
+  - id: "RULE-S3-003"
+    name: "Anomalous S3 Mass Object Deletion"
+    severity: "CRITICAL"
+    mitre_attack:
+      technique: "T1485"
+      name: "Data Destruction"
+      tactic: "Impact"
+    cis_benchmark: "CIS AWS 2.1.3"
+
+  - id: "RULE-IAM-004"
+    name: "IAM Access Key Older Than 90 Days"
+    severity: "LOW"
+    mitre_attack:
+      technique: "T1078.004"
+      name: "Valid Accounts: Cloud Accounts"
+      tactic: "Persistence"
+    cis_benchmark: "CIS AWS 1.14"
+
+  - id: "RULE-IAM-005"
+    name: "IAM Account Password Policy Weakened"
+    severity: "MEDIUM"
+    mitre_attack:
+      technique: "T1078"
+      name: "Valid Accounts"
+      tactic: "Defense Evasion"
+    cis_benchmark: "CIS AWS 1.8"
